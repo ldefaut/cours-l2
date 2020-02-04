@@ -1,4 +1,11 @@
 const anagrammes = (stringA, stringB) => {
+  
+  const re = /([A-Za-z])\w+/g;
+  
+  const sortA = stringA.split('').sort().join('').toLocaleLowerCase().match((re)|| []).join('');
+  const sortB = stringB.split('').sort().join('').toLocaleLowerCase().match((re)|| []).join('');
+  
+  return sortA === sortB;
   /**
    * stringA est égale à stringB si et seulement s'ils partagent les mêmes
    * caractères alphabétiques dans la même quantité.
@@ -15,6 +22,26 @@ const anagrammes = (stringA, stringB) => {
 
 
 class Stack {
+  
+  constructor(){
+    this.items =[];
+    this.index = 0;
+  }
+  
+  push(element){
+    this.items[this.index] = element;
+    this.index++;
+  }
+  
+  pop(){
+    this.index--;
+    return this.items[this.index]
+  }
+  
+  
+  peek(){
+    return this.items[this.index-1];
+  }
 /**
  * Créer une structure d'empilement. La structure doit être
  * une classe contenant les méthodes :
@@ -36,23 +63,63 @@ class Stack {
 
 
 const fizzBuzz = (n) => {
-/**
- * Affiche les nombres de 1 à n, en remplaçant les multiples de 3 par fizz et 
- * les multiples de 5 par buzz
- *
- * Exemple :
- *
- * fizzBuzz(5);
- * console.log(1)
- * console.log(2)
- * console.log('fizz')
- * console.log(4)
- * console.log('buzz')
- */
+  
+  for (let i = 1; i<= n ; i++ ) {
+    if (i%15 == 0){
+      console.log("fizzbuzz")
+    }
+    else if(i%3==0) {
+      console.log("fizz")
+    }
+    else if(i%5==0){
+      console.log("buzz")
+    }
+    else{
+      console.log(i)
+    }
+  }
+
 
 };
 
 const spirale = (n) => {
+  
+   let result = new Array(n).fill().map(() => new Array(n).fill('')); // create empty n x n array
+    let counter = 1;
+    let startCol = 0;
+    let endCol = n - 1;
+    let startRow = 0;
+    let endRow = n - 1;
+    while (startCol <= endCol && startRow <= endRow) {
+        for (let i = startCol; i <= endCol; i++) {
+            result[startRow][i] = counter;
+            counter++;
+        }
+        startRow++;
+        for (let j = startRow; j <= endRow; j++) {
+            result[j][endCol] = counter;
+            counter++;
+        }
+
+        endCol--;
+
+        for (let i = endCol; i >= startCol; i--) {
+            result[endRow][i] = counter;
+            counter++;
+        }
+
+        endRow--;
+        for (let i = endRow; i >= startRow; i--) {
+            result[i][startCol] = counter;
+            counter++;
+        }
+
+        startCol++;
+
+    }
+
+    return result;
+    
 /**
  * Retourne une matrice spirale de taille n x n.
  *
@@ -75,6 +142,29 @@ const spirale = (n) => {
 
 
 const puissance4 = (grid) => {
+  
+  // for (var i = 0; i<=3; i++) {
+  //     for (var j = 0; j<=4; j++) {
+  //       let memoire = puissance4(i, j);
+  //       let compteur = 0;
+  //       if (puissance4(i, j)==memoire){
+  //         compteur++
+  //         memoire= puissance4(i, j);
+  //         if (compteur==4){
+  //           // console.log(1);
+  //           return 1;
+  //         }
+  //         else{
+  //           // console.log(false)
+  //         }
+  //       }
+  //     } 
+  // }
+  
+  
+  const tab= puissance4(this.element);
+  
+  
 /**
  * Vérifie si un joueur a gagné au puissance 4,
  * c'est-à-dire s'il a 4 jetons contigus en diagonales, lignes ou colonnes.
@@ -110,5 +200,5 @@ module.exports = {
   puissance4,
   spirale,
   anagrammes,
-  Stack
+  Stack,
 }
