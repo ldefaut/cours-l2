@@ -1,6 +1,15 @@
 .toggled {
+  border-radius: 8px;
+  margin-top: 10%;
+  width: 100px;
+  height: 35px;
   border: 1px solid red;
 }
+
 .untoggled {
+  border-radius: 8px;
+  margin-top: 10%;
+  width: 100px;
+  height: 35px;
   border: 1px solid blue;
 }

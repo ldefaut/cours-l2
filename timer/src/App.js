@@ -1,12 +1,13 @@
 import React from 'react';
+// eslint-disable-next-line
 import logo from './logo.svg';
-import Map from "./components/map/Map";
 import './App.css';
+import Timer from './components/timer/Timer'
 
 function App() {
   return (
     <div className="App">
-	  <Map center={ { lat: 45.1885, lng: 5.7245} } />
+    <Timer/>
     </div>
   );
 }
